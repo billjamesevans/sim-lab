@@ -26,3 +26,7 @@ COPY apps/sim/package.json ./apps/sim/package.json
 COPY apps/sim/lib/env.ts ./apps/sim/lib/env.ts
 
 WORKDIR /app/apps/sim
+
+# This image is used by docker-compose to run migrations.
+# Provide a default command so it can be executed standalone.
+CMD ["bun", "run", "db:push"]
