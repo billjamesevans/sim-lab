@@ -18,6 +18,26 @@ To start Sim Studio, simply run:
 simstudio
 ```
 
+### Examples
+
+- Start on a different port:
+
+```bash
+simstudio --port 4000
+```
+
+- Skip pulling the latest Docker images:
+
+```bash
+simstudio --no-pull
+```
+
+- Run without prompts using defaults:
+
+```bash
+simstudio -y
+```
+
 ### Options
 
 - `-p, --port <port>`: Specify the port to run Sim Studio on (default: 3000).

@@ -23,6 +23,10 @@
 
 There are several ways to self-host Sim Studio:
 
+The project includes an example environment file at `apps/sim/.env.example`.
+Copy this file to `.env` and adjust the values to match your setup before
+starting the application.
+
 ### Option 1: Docker Environment (Recommended)
 
 ```bash
@@ -39,6 +43,9 @@ docker compose up -d --build
 or
 
 ./start_simstudio_docker.sh
+
+# Windows and cross-platform users can run the Node.js helper
+node start_simstudio_docker.js
 ```
 
 After running these commands:
