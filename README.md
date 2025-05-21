@@ -71,57 +71,19 @@ After running these commands:
    docker compose up -d --build
    ```
 
-#### Working with Local Models
+#### Using the OpenAI API
 
-To use local models with Sim Studio, follow these steps:
-
-1. **Pull Local Models**
-
-   ```bash
-   # Run the ollama_docker.sh script to pull the required models
-   ./apps/sim/scripts/ollama_docker.sh pull <model_name>
-   ```
-
-2. **Start Sim Studio with Local Models**
-
-   ```bash
-   #Start Sim Studio with local model support
-   ./start_simstudio_docker.sh --local
-
-   # or
-
-   # Start Sim Studio with local model support if you have nvidia GPU
-   docker compose up --profile local-gpu -d --build
-
-   # or
-
-   # Start Sim Studio with local model support if you don't have nvidia GPU
-   docker compose up --profile local-cpu -d --build
-   ```
-
-The application will now be configured to use your local models. You can access it at [http://localhost:3000/w/](http://localhost:3000/w/).
-
-#### Connecting to Existing Ollama Instance
-
-If you already have an Ollama instance running on your host machine, you can connect to it using one of these methods:
+If you plan to work exclusively with OpenAI models, a minimal Python example is included. It uses the official `openai` package to send a chat completion request.
 
 ```bash
-# Method 1: Use host networking (simplest approach)
-docker compose up --profile local-cpu -d --build --network=host
+# Install Python dependencies
+pip install -r python/requirements.txt
+
+# Run the example chat script
+python python/openai_chat.py
 ```
 
-Or modify your docker-compose.yml:
-
-```yaml
-# Method 2: Add host.docker.internal mapping
-services:
-  simstudio:
-    # ... existing configuration ...
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
-    environment:
-      - OLLAMA_HOST=http://host.docker.internal:11434
-```
+Make sure the `OPENAI_API_KEY` environment variable is set before running the script. This script demonstrates a basic call to the OpenAI API and can be used as a starting point for further experimentation.
 
 ### Option 2: Dev Containers
 
